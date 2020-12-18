@@ -2,13 +2,15 @@
 
 (See [Implementation](https://github.com/Snapu/workout-companion/blob/master/src/services/logger.ts))
 
-In the recent years Web Apps became more and more populer and with the influence of Domain Driven Design and the [Micro Frontends](https://micro-frontends.org/) movement more and more functionality is shifted towards the frontend. Leading to an increased need of cloud logging in the frontend. E.g. in my own [private project](https://github.com/Snapu/workout-companion) I log to the Google Cloud from my frontend and my backend is very little to none existent.
+In the recent years Web Apps became more and more popular and with the influence of Domain Driven Design and the [Micro Frontends](https://micro-frontends.org/) movement more and more functionality is shifted towards the frontend. Leading to an increased need of cloud logging in the frontend. E.g. in my own [private project](https://github.com/Snapu/workout-companion) I log to the Google Cloud from my frontend and my backend is very little to none existent.
 
 Here, I will not talk about how to technically log to Google Cloud or any other logging platform but how to *enforce* efficient and effective logging with a little typescript decorator.
 
 So when is a logging **efficient** and **effective**?
 
-My opinion is: logging should be **minimal** as possible and **maximal** as needed, **structured** and follow a certain **standard**. Then, it is very comfortable to analyse the logs.
+My opinion is:
+
+logging should be **minimal** as possible and **maximal** as needed, **structured** and follow a certain **standard**. Then, it will be very comfortable to analyse the logs.
 
 I think with a little typescript decorator you can enforce this very well:
 
@@ -42,7 +44,7 @@ Calling `car.park(Direction.BACKWARDS)` would produce the following json log:
 
 As you see it adds a lot of context to the log:
 * a persistent random `userId` to distinguish logs from different users,
-* browser details and which version of the app is used,
+* browser details and which version of the app is beeing used,
 * the actual log message,
 * the method where the log was initiated,
 * and how long the method took to resolve. Isn't that cool?
@@ -53,6 +55,6 @@ So why do I think it enforces efficient and effective logging?
 
 Firstly, every log has a certain structure with very useful context data. But more importantly, it makes you think about how to structure your entire code and enforces to apply the Separation of Concerns principle (SoC). Just think about the following: Don't you normaly just log whenever a **step** started, successfully finished or failed? Why not then implement each step as a seperate method and apply the decorator for automatic success and error logging? This process of thinking makes you decide which step is worthful to seperate and properly log (good case **and** bad case) leading to a more balanced and complete logging.
 
-What do you think? Could this lead to a better logging and cleaner code as well? Do you experience the same problems with logging?
+What do you think? Could this lead to a better logging and cleaner code as well? Do you experience the same problems with your logging?
 
 *typos will be fixed soon and eventually the implementation currently living in [my app](https://github.com/Snapu/workout-companion/blob/master/src/services/logger.ts) will be extracted to a seperate library.*
