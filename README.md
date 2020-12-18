@@ -58,6 +58,6 @@ Firstly, every log has a certain structure with very useful context data. But mo
 What do you think? Could this lead to a better logging and cleaner code as well? Do you experience the same problems with your logging?
 
 ## Further ideas
-* [Intercept HTTP requests](https://developer.mozilla.org/en-US/docs/Mozilla/Add-ons/WebExtensions/Intercept_HTTP_requests) and log status code in case of errors
+* Intercept HTTP requests and log status code in case of errors
 
 *typos will be fixed soon and eventually the implementation currently living in [my app](https://github.com/Snapu/workout-companion/blob/master/src/services/logger.ts) will be extracted to a seperate library.*
