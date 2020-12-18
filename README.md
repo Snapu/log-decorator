@@ -41,8 +41,8 @@ Calling `car.park(Direction.BACKWARDS)` would produce the following json log:
 ```
 
 As you see it adds a lot of context to the log:
-* a persistent random `userId` to distiguish logs from different users,
-* browser details and which version of the app,
+* a persistent random `userId` to distinguish logs from different users,
+* browser details and which version of the app is used,
 * the actual log message,
 * the method where the log was initiated,
 * and how long the method took to resolve. Isn't that cool?
@@ -51,8 +51,8 @@ In case of an error, it would also add the `name`, `message` and `stack` of the 
 
 So why do I think it enforces efficient and effective logging?
 
-Firstly, every log has a certain structure with very useful context data. But more importantly, it makes you think about how to structure your entire code and enforces to apply the Separation of Concerns principle (SoC). Just think about the following: Don't you normaly just log whenever a **step** started, successfully finished or failed? Why not then implement each step as a seperate method and apply the decorator for automatic success and error logging? This process of thinking makes you to decide which step is worthful to seperate and properly log (good case **and** bad case) leading to a more balanced and complete logging.
+Firstly, every log has a certain structure with very useful context data. But more importantly, it makes you think about how to structure your entire code and enforces to apply the Separation of Concerns principle (SoC). Just think about the following: Don't you normaly just log whenever a **step** started, successfully finished or failed? Why not then implement each step as a seperate method and apply the decorator for automatic success and error logging? This process of thinking makes you decide which step is worthful to seperate and properly log (good case **and** bad case) leading to a more balanced and complete logging.
 
 What do you think? Could this lead to a better logging and cleaner code as well? Do you experience the same problems with logging?
 
-*typos will be fixed soon and eventually the implementation currently living in [my app](https://github.com/Snapu/workout-companion/blob/master/src/services/logger.ts) will be extracted to a seperate library*
+*typos will be fixed soon and eventually the implementation currently living in [my app](https://github.com/Snapu/workout-companion/blob/master/src/services/logger.ts) will be extracted to a seperate library.*
