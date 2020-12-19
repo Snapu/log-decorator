@@ -51,6 +51,26 @@ As you see it adds a lot of context to the log:
 
 In case of an error, it would also add the `name`, `message` and `stack` of the error and automatically change the severity to `WARN` (Further idea: intercept HTTP requests and also log status code).
 
+```
+{
+    "severity": "WARN",
+    "jsonPayload": {
+        "userId": "fca13c5a-0a44-4ed7-8fca-38e5eff04fcf",
+        "userAgent": "Mozilla/5.0 (Macintosh; Intel Mac OS X 10_15_7) AppleWebKit/537.36 (KHTML, like Gecko) Chrome/87.0.4280.101 Safari/537.36",
+        "language": "de-DE",
+        "version": "1.0.0",
+        "message": "parking car",
+        "method": "Car.park",
+        "args": "BACKWARDS",
+        "duration": "7465",
+        "error": {
+            "name": "Error",
+            "message": "Not enough parking space",
+            "stack": "Error: Not enough parking space\n    at Car.park (<anonymous>:3:15)\n    at <anonymous>:2:9"
+    }
+}
+```
+
 So why do I think it enforces efficient and effective logging?
 
 Firstly, every log has a certain structure with very useful context data. But more importantly, it makes you think about how to structure your entire code and enforces to apply the Separation of Concerns principle (SoC). Just think about the following: Don't you normaly just log whenever a **step** started, successfully finished or failed? Why not then implement each step as a seperate method and apply the decorator for automatic success and error logging? This process of thinking makes you decide which step is worthful to seperate and properly log (good case **and** bad case) leading to a more balanced and complete logging.
